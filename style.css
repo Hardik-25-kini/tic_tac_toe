@@ -4,8 +4,8 @@
 }
 
 h1{
-    color: rgba(23, 173, 10, 0.897);
-    text-shadow: green 2px 2px 10px, blue 2px 2px 10px;
+    color: rgba(240, 181, 5, 0.897);
+    text-shadow: rgb(17, 194, 10) 2px 2px 10px, blue 2px 2px 10px;
 }
 body {
     background-color: rgb(21, 20, 20);
@@ -44,18 +44,20 @@ body {
 #reset {
     height: 10vmin;
     width: 30vmin;
-    background-color: rgb(236, 74, 4, 0.897);
+    background-color:orange;
     color: aliceblue;
     border-radius: 3rem;
     margin-bottom: 30px;
-    box-shadow: rgb(222, 102, 9) 2px 2px 10px;
+    box-shadow: orange 2px 2px 10px;
 }
 
+    
 #msg {
     font-size: 45px;
-    color:rgb(12, 216, 121);
+    color:orange;
     text-decoration: underline;
     text-shadow: red 2px 2px 10px, blue 2px 2px 10px;
+   
 }
 
 .msgContainer {
@@ -64,19 +66,19 @@ body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    box-shadow: rgb(170, 3, 3) 2px 2px 10px;
 }
 
 #newGame {
     height: 10vmin;
     width: 30vmin;
-    background-color: rgb(236, 74, 4, 0.897);
+    background-color: orange;
     color: aliceblue;
     border-radius: 2rem;
     margin-top: 10vmin;
-    box-shadow: rgb(222, 102, 9) 2px 2px 10px;
+    box-shadow: orange 2px 2px 10px;
 }
 
 .hide{
     display: none;
 }
+

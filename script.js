@@ -1,9 +1,11 @@
 let boxes = document.querySelectorAll('.box');
 let resetBtn = document.querySelector("#reset");
-let newGameBtn = document.querySelector("#resetGame")
+let newGameBtn = document.querySelector("#newGame");
 let msgContainer = document.querySelector(".msgContainer");
 let msg = document.querySelector("#msg");
+let count=0;
 let turno = true;
+let noOfTurns = 0;
 
 
 const winningPattern = [
@@ -23,11 +25,13 @@ boxes.forEach((box) => {
         console.log("box was clicked")
         if(turno){
             box.innerText = "O";
-            box.style.color = "yellow";
+            box.style.color = "orange";
+            noOfTurns+=1;
             turno = false;
         }else{
             box.innerText = "X";
-            box.style.color = "red";
+            box.style.color = "blue";
+            noOfTurns+=1;
             turno = true;
         }
         box.disabled=true;
@@ -37,8 +41,9 @@ boxes.forEach((box) => {
 
 const enableBtn = () => {
     for(box of boxes){
-        box.disabled = false;
+        
         box.innerText = "";
+        box.disabled = false;
         msgContainer.classList.add("hide");
     }
 }
@@ -46,7 +51,9 @@ const enableBtn = () => {
 const resetGame = () =>{
     turno = true;
     enableBtn();
+    noOfTurns = 0;
 }
+
 const newGame = () =>{
     turno = true;
     enableBtn();
@@ -59,11 +66,19 @@ const disableBtn = () => {
 }
 
 const showWinner = (winner) => {
-    msg.innerText = `Congratulations, Winner is ${winner}`;
+    msg.innerText = `🎊🎊Congratulations, Winner is ${winner}🎊🎊`;
     msgContainer.classList.remove("hide");
     disableBtn();
 }
-    
+
+const showTie = () => {
+    msg.innerText = `It's a Tie!😔`;
+    msgContainer.classList.remove("hide");
+    noOfTurns = 0;
+    turno = true;
+    disableBtn();
+}
+
 
 const checkWinner = () => {
     for (let pattern of winningPattern) {
@@ -74,13 +89,21 @@ const checkWinner = () => {
         let pos3Val = boxes[pattern[2]].innerText;
 
         if (pos1Val != "" && pos2Val != "" && pos3Val != "") {
-            if (pos1Val == pos2Val && pos2Val == pos3Val) {
+            if (pos1Val == pos2Val && pos2Val == pos3Val ) {
                 console.log("Winner", pos1Val);
                 showWinner(pos1Val);
+
+            }
+            else if (noOfTurns === 9 && pos1Val != "" && pos2Val != "" && pos3Val != "") {
+                console.log("It's a Draw!");
+                
+                showTie();
             }
         }
     }
 }
+
+
 
 resetBtn.addEventListener("click", resetGame);
 newGameBtn.addEventListener("click", newGame);
